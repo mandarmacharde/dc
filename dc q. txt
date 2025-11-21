@@ -3,7 +3,7 @@ Q1 Distributed Banking System
 A distributed banking application runs across multiple servers, each responsible for handling a set of customers. 
 If the primary server crashes, a new leader server must be elected using any of the Election Algorithms. 
 The leader is responsible for synchronizing account balances and ensuring  clock synchronization between servers to maintain transaction ordering. 
-Question: 
+Question:  
 Simulate a distributed banking system where servers elect a leader after a crash (using Bully or Ring algorithm). The leader maintains global transaction ordering using clock synchronization ( which and why? ) . Show how clients can still perform transactions consistently after leader election. 
 Features you need to implement: 
 Leader election (use any algorithm) 
