@@ -1,0 +1,114 @@
+DC Lab Exams 1 
+Q1 Distributed Banking System 
+A distributed banking application runs across multiple servers, each responsible for handling a set of customers. 
+If the primary server crashes, a new leader server must be elected using any of the Election Algorithms. 
+The leader is responsible for synchronizing account balances and ensuring  clock synchronization between servers to maintain transaction ordering. 
+Question: 
+Simulate a distributed banking system where servers elect a leader after a crash (using Bully or Ring algorithm). The leader maintains global transaction ordering using clock synchronization ( which and why? ) . Show how clients can still perform transactions consistently after leader election. 
+Features you need to implement: 
+Leader election (use any algorithm) 
+Monitoring algorithm for leader (Keep it simple for now) 
+Clock Synchronization between the servers 
+You can use REST apis, RPC/RMI or web sockets for communication. 
+
+Q2 Remote Code Execution Engine (Using RPC/Java RMI) 
+A startup wants to build a Remote Code Execution Engine that allows clients to send small programs (e.g., arithmetic operations, sorting tasks, or string 
+manipulations) to a server for execution. 
+The client provides a code snippet. 
+The server, running in a distributed environment, executes the code and 
+returns the result to the client. 
+To improve responsiveness, the server must use multithreading to execute multiple client requests concurrently. 
+    Communication between client and server must be done using RPC/Java RMI. Features: 
+Design and implement a Remote Code Execution Engine where: 
+1. The client sends a task (like a mathematical computation or algorithmic function) to the server. 
+2. The server executes the task and returns the result. 
+3. The server can handle multiple clients simultaneously using multithreading. 
+
+
+Q3 Managing API keys using Multi-threading 
+Design a server using multi-threading, capable of generating, assigning, and managing API keys with specific functionalities. 
+The server should offer various endpoints for interaction: 
+An endpoint to create new keys. Each generated key has a life of 5 minutes after which it gets deleted automatically if keep-alive operation is not run for that key (More details mentioned below). 
+An endpoint to retrieve an available key. This key should then be blocked from being served again until its status changes.  
+An endpoint to unblock a previously assigned key, making it available for reuse (optional). 
+An endpoint for key keep-alive functionality, requiring clients to signal every 5 minutes to prevent the key from being deleted. 
+Automatically release blocked keys within 60 seconds if not unblocked 
+explicitly (optional). 
+
+
+
+Q4 Distributed Logging System for anomaly detection 
+A company wants a Distributed Logging System where logs from multiple servers can be merged into a globally ordered timeline. You are required to implement a  clock synchronization mechanism so that distributed events are consistently ordered. 
+Requirements 
+1. Distributed Servers 
+Simulate multiple servers, each generating logs with their own 
+unsynchronized clock. 
+Logs should include: 
+Event description (a simple message for example) 
+Server ID  
+Timestamp 
+2. Clock Synchronization 
+Implement either: 
+Berkeley's Algorithm (synchronize physical clocks with a master). 
+Lamport Logical Clocks (maintain event order without physical 
+synchronization). 
+The choice must be justified on the use case. 
+3. Log Merging 
+Collect logs from all servers into a centralized log manager. 
+Re-order logs based on synchronized timestamps (Berkeley) or logical 
+clock values (Lamport). 
+Show the centralized logs on this server with the synchronized timestamps as well as raw timestamps 
+4. Concurrency (Optional) 
+If multiple logs have the same timestamp/logical clock, break ties by  
+Server ID. 
+Demonstrate that no two logs appear out of order. 
+
+ Q5.  Implement a distributed Arithmetic Service where a client invokes remote
+methods (addition, subtraction, multiplication) on a server using RPC (Python) or
+RMI (Java).
+Design a server exposing remote arithmetic functions.
+Implement a client that invokes these remote functions.
+Demonstrate remote invocation, marshalling, and returns.
+
+Q6. Simulate Vector Clocks for logical clock synchronization.
+Create distributed processes/events.
+Apply timestamp rules for event ordering. 
+Q7. Design a system of distributed nodes and simulate leader election using the Bully Algorithm.
+Assign priorities to nodes.
+Simulate node failure.
+Trigger election and determine new coordinator.
+Display complete election steps.
+
+Q8.  Simulate the Ring Election Algorithm with circular process arrangement.
+Create N processes arranged in a ring.
+On failure of leader → initiate election.
+Pass election messages clockwise until a new leader is chosen.
+
+
+
+
+
+Q9. Build a simple distributed key-value store that shows eventual consistency across replicas.
+Create 3 replica nodes storing same key-value pairs.
+Update one replica first → propagate updates after delay.
+Show difference between strong consistency vs eventual consistency.
+
+Q10. Create a multithreaded server that handles multiple client requests
+simultaneously.
+Implement a server that spawns a new thread for each client.
+For client simulation you can create different file or make Curl / Postman
+Requests as well if using REST apis
+Clients send simple requests (like text processing).
+Server processes each request independently.
+
+
+Q11. Simulate a load balancer that distributes requests to backend servers.
+Implement a load balancer module.
+Backend simulated as threads or functions.
+Implement either:Round Robin, OR
+Least Connections
+Print load distribution.
+
+
+
+
